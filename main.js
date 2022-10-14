@@ -6,6 +6,7 @@ import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 import { displayDropdownParams } from "./src/dropdown-stats";
 
 import {
+	getDate,
 	getMonth,
 	getYear,
 	getNumber,
@@ -19,19 +20,19 @@ const date = new Date();
 
 // Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyAp5Rk71EEkp74h8GONSTUco_9RxRZSm_0",
-	authDomain: "sales-tracker-demoproject.firebaseapp.com",
-	projectId: "sales-tracker-demoproject",
-	storageBucket: "sales-tracker-demoproject.appspot.com",
-	messagingSenderId: "804031941012",
-	appId: "1:804031941012:web:1ddc2d6cb76dd88d5b2781",
-	measurementId: "G-JJ32NE0F2Q",
+	apiKey: "AIzaSyCMSw_jpYL--CtqKFuwVuVbvdeRZ19nKa8",
+	authDomain: "sales-tracker-demoprojec-7ad2d.firebaseapp.com",
+	projectId: "sales-tracker-demoprojec-7ad2d",
+	storageBucket: "sales-tracker-demoprojec-7ad2d.appspot.com",
+	messagingSenderId: "843330215009",
+	appId: "1:843330215009:web:d5606ff73d44e26d00de20",
+	measurementId: "G-ZBG4QR9HD1",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const sales = collection(db, "test");
+const sales = collection(db, "sales");
 
 // Grab elements from DOM
 
@@ -67,7 +68,6 @@ form.addEventListener("submit", async (event) => {
 	event.preventDefault();
 
 	const data = [...new FormData(form)];
-	console.log(data);
 
 	try {
 		// Clear the array (delete all data in it)
@@ -80,7 +80,6 @@ form.addEventListener("submit", async (event) => {
 			year: getYear(date),
 			month: getMonth(date),
 		});
-		console.log(`Document written with ID: ${docRef.id}`);
 
 		// Sale form submitting alert
 		// SweetAlert - swal("Vanzare adaugata cu succes!");

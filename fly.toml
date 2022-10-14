@@ -1,6 +1,6 @@
-# fly.toml file generated for petsidestory on 2022-10-13T19:57:14+03:00
+# fly.toml file generated for sales-tracker on 2022-10-14T12:20:47+03:00
 
-app = "petsidestory"
+app = "sales-tracker"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

@@ -44,10 +44,12 @@ const toggleOptions = (
 
 		if (!secondElement.classList.contains("hidden")) {
 			toggleHidden(secondElement);
+			showBtnsLayout.classList.toggle("addSevenRem");
 		}
 
 		if (!thirdElement.classList.contains("hidden")) {
 			toggleHidden(thirdElement);
+			showBtnsLayout.classList.toggle("addSevenRem");
 		}
 	});
 };
