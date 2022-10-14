@@ -8,10 +8,6 @@ export const getMonth = (date) => {
 	return new Intl.DateTimeFormat("ro-RO", options).format(date);
 };
 
-export const getDate = (date) => {
-	return date.getDate();
-};
-
 export const getNumber = (string) => {
 	return Number.parseInt(string, 10);
 };

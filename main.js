@@ -6,7 +6,6 @@ import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 import { displayDropdownParams } from "./src/dropdown-stats";
 
 import {
-	getDate,
 	getMonth,
 	getYear,
 	getNumber,
