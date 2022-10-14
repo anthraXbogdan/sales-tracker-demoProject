@@ -1,0 +1,81 @@
+.show-buttons-layout {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2rem;
+}
+
+.button {
+	font-family: "Merriweather Sans", sans-serif;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 3.3rem;
+	width: 100%;
+	background-color: #8d99ae;
+	border: 1.1px solid #8d99ae;
+	border-radius: 0.3rem;
+	color: #fff;
+	position: relative;
+	font-size: 1rem;
+	word-spacing: 0.3rem;
+	font-weight: 300;
+	padding-inline-start: 1rem;
+	padding-inline-end: 1rem;
+	cursor: pointer;
+}
+
+.btn-enabled {
+	background-color: #2b2c42;
+	border: 1.1px solid #2b2c42;
+}
+
+.addSevenRem {
+	margin-top: 7rem;
+}
+
+.btn-disabled {
+	background-color: #8d99ae;
+}
+
+.dropdown-btn {
+	background-color: #fefefe;
+	color: #2b2d42;
+}
+
+.submit-btn {
+	width: 65%;
+	height: 3.7rem;
+	margin-top: 1.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.3rem;
+	font-weight: 400;
+}
+
+.reset-btn {
+	width: 30%;
+	font-weight: 400;
+}
+
+.custom-stats-btn-area .button {
+	padding: 0.5rem;
+}
+
+.submit-btn:focus,
+.reset-btn:focus {
+	outline: none;
+	background-color: #2b2c42;
+}
+
+.submit-btn:hover,
+.reset-btn:hover {
+	background-color: #363852;
+	border: 1px solid #363852;
+	color: #fff;
+}
+
+.submit-btn:active,
+.reset-btn:active {
+	background-color: #aaa;
+}

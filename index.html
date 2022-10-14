@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="sales-tracker.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SalesTracker</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Inter&family=Merriweather+Sans:wght@300;400;800&family=Secular+One&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="src/buttons.css" />
+		<link rel="stylesheet" href="src/alerts.css" />
+		<script type="module" src="/main.js" defer></script>
+		<script type="module" src="/src/dropdown-stats.js" defer></script>
+		<script type="module" src="/src/dropdown-sale.js" defer></script>
+		<script type="module" src="src/helper.js"></script>
+	</head>
+
+	<body>
+		<header class="margin-set">
+			<div class="logo">
+				<a href="#"><h1>pet side story</h1></a>
+			</div>
+		</header>
+
+		<nav>
+			<h2>Sales Tracker</h2>
+		</nav>
+
+		<main class="main">
+			<div class="card sales-form-card">
+				<h1>Formular vânzare</h1>
+
+				<form id="sale-form">
+					<div class="select-group">
+						<label for="sale-food-btn">Tipul de hrană</label>
+						<button id="sale-food-btn" class="button dropdown-btn">
+							<span id="sale-food-label">alege un tip de hrană</span>
+							<div id="arrow" class="arrow"></div>
+						</button>
+
+						<div
+							class="dropdown-list dropdown-sale hidden"
+							id="dropdown-sale"
+						></div>
+					</div>
+
+					<label for="money">Valoare (lei)</label>
+					<input
+						type="number"
+						name="money"
+						id="money"
+						required
+						oninvalid="this.setCustomValidity('Te rog adauga valoarea (lei)')"
+						;
+						placeholder="0 lei"
+						min="0"
+					/>
+
+					<label for="items">Bucăți</label>
+					<input
+						type="number"
+						name="items"
+						id="items"
+						required
+						oninvalid="this.setCustomValidity('Te rog adauga nr. de bucati')"
+						placeholder="0 buc"
+						min="0"
+					/>
+
+					<div class="show-buttons-layout">
+						<button
+							class="button submit-btn reset-btn"
+							id="sale-reset-btn"
+							type="button"
+						>
+							Reset
+						</button>
+
+						<button
+							class="button submit-btn"
+							id="submit-sale-btn"
+							type="submit"
+						>
+							Adaugă vânzare
+						</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="card statistics-card">
+				<h1>Statistici vânzări</h1>
+
+				<div id="statistics-card">
+					<div class="sales-card" id="sales-all">
+						<h2>All time</h2>
+
+						<div class="item-card">
+							<p>Încasări</p>
+							<p id="total-sales">0 lei</p>
+						</div>
+
+						<div class="item-card">
+							<p>Superworms</p>
+							<p id="total-superworms">0 buc</p>
+						</div>
+
+						<div class="item-card">
+							<p>Mealworms</p>
+							<p id="total-mealworms">0 buc</p>
+						</div>
+
+						<div class="item-card">
+							<p>Dubia</p>
+							<p id="total-dubia">0 buc</p>
+						</div>
+
+						<div class="item-card">
+							<p>Redhead</p>
+							<p id="total-red-head">0 buc</p>
+						</div>
+					</div>
+
+					<div class="sales-card" id="sales-custom">
+						<h2>Statistici customizate</h2>
+
+						<div class="custom-stats-btn-area">
+							<button id="stats-year-btn" class="button dropdown-btn">
+								<span id="stats-year-label">Anul</span>
+								<div id="arrow" class="arrow"></div>
+							</button>
+
+							<button id="stats-month-btn" class="button dropdown-btn">
+								<span id="stats-month-label">Luna</span>
+								<div id="arrow" class="arrow"></div>
+							</button>
+
+							<button id="stats-food-btn" class="button dropdown-btn">
+								<span id="stats-food-label">Hrana</span>
+								<div id="arrow" class="arrow"></div>
+							</button>
+						</div>
+
+						<div class="custom-stats-btn-area stats-dropdown">
+							<div
+								class="dropdown-list dropdown-stats hidden"
+								id="dropdown-stats-year"
+							></div>
+							<div
+								class="dropdown-list dropdown-stats hidden"
+								id="dropdown-stats-month"
+							></div>
+							<div
+								class="dropdown-list dropdown-stats hidden"
+								id="dropdown-stats-food"
+							></div>
+						</div>
+
+						<div id="custom-stats-data">
+							<div class="show-buttons-layout" id="stats-buttons-layout">
+								<button
+									class="button submit-btn reset-btn"
+									id="stats-reset-btn"
+								>
+									Reset
+								</button>
+
+								<button class="button submit-btn" id="show-stat-btn">
+									Arată statistica
+								</button>
+							</div>
+
+							<div class="custom-data-card">
+								<div class="custom-data-title">
+									<h2 id="food-type"></h2>
+									<h2>|</h2>
+									<h2 id="date"></h2>
+								</div>
+
+								<div class="custom-data-results items">
+									<div class="item-card">
+										<p>Bucăți vândute</p>
+										<p id="items-sold">0 buc</p>
+									</div>
+								</div>
+
+								<div class="custom-data-results sales">
+									<div class="item-card">
+										<p>Încasări</p>
+										<p id="sum">0 lei</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<p>
+				<span>pet side story </span>Copyright ©
+				<span id="copywright-year"></span>
+			</p>
+		</footer>
+	</body>
+</html>

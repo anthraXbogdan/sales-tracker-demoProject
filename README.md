@@ -1,2 +1,2 @@
-# sales-tracker-demoProject
-JavaScript demo project
+# sales-tracking
+Tracking sales for the start-up PetSideStory

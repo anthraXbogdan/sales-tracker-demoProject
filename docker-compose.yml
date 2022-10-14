@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  webserver:
+    image: anthraxbogdan/nginx-webserver:1.0
+    build:
+      context: .
+    deploy:
+      replicas: 1
+      restart_policy:
+        max_attempts: 3
+        condition: on-failure
+      update_config:
+        parallelism: 3
+        delay: 10s
+    ports:
+      - "4000:80"

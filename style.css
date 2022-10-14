@@ -1,0 +1,414 @@
+/* || General styles */
+html {
+	font-family: "Merriweather Sans", sans-serif;
+	background-color: #8d99ae;
+}
+
+body {
+	font-family: "Merriweather Sans", sans-serif;
+	font-size: 10px;
+	box-sizing: border-box;
+	line-height: 28px;
+	font-smooth: allways;
+	background-color: #edf2f4;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+header {
+	margin: 0;
+	width: 100%;
+	height: 4rem;
+	height: 6rem;
+	background-color: #2b2d42;
+	padding: 0;
+	margin-block-end: 0;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+header h1 {
+	display: inline-block;
+	margin: 0;
+	padding: 0 0 0 2rem;
+	font-family: "Grape Nuts", cursive;
+	font-size: 1.8rem;
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: 1px;
+	color: #d7e2e6;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	height: 2.5rem;
+	background-color: #ef233c;
+	color: #d7e2e6;
+	position: sticky;
+	top: 0;
+	z-index: +1;
+}
+
+nav h2 {
+	padding: 0 0 0 1.8rem;
+	font-size: 1rem;
+	font-weight: 300;
+	letter-spacing: 0.5px;
+	word-spacing: 0.5rem;
+}
+
+.main {
+	display: block;
+	margin: 1rem 0;
+	width: 95%;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* hiding arrows for the input fields with type="number" */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	display: none;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+main h1 {
+	font-family: "Merriweather Sans", sans-serif;
+	font-size: 4em;
+	font-weight: Bold;
+	line-height: 1em;
+	color: #2b2d42;
+	margin: 0;
+	padding: 0;
+}
+
+/* || Styling card */
+
+.card {
+	max-width: 30rem;
+	margin: 0.1rem 0.1rem 2.1rem 0.1rem;
+	padding: 2.3rem 1.9rem 1.9rem 1.9rem;
+	border-radius: 0.3rem;
+	background-color: #f7f9fa;
+	border: 1px solid #d7e2e6;
+}
+
+.card h1 {
+	font-size: 1.9rem;
+	font-weight: 500;
+	word-spacing: 0.7rem;
+	color: #2b2d42;
+}
+
+.card h2 {
+	font-weight: 400;
+	font-size: 1.3rem;
+	color: #414464;
+	padding-block-end: 0.4rem;
+	border-block-end: 1px solid #ef233c;
+}
+
+.card p {
+	font-size: 1rem;
+	word-spacing: 0.3rem;
+}
+
+/* || Styling Sales-form card */
+
+input {
+	border: 1.1px solid #8d99ae;
+	border-radius: 0.3rem;
+	width: 100%;
+	box-sizing: border-box;
+	height: 3.3rem;
+	font-size: 1rem;
+	font-weight: 300;
+	padding-inline-start: 1rem;
+}
+
+input[type="radio"]:checked + label {
+	background-color: #585c86;
+	color: #fefefe;
+	border-radius: 0.3rem;
+}
+
+*:focus {
+	outline: none;
+	border: 1.1px solid #2b2d42;
+}
+
+label {
+	font-family: "Merriweather Sans", sans-serif;
+	display: block;
+	font-size: 1rem;
+	padding: 2rem 0 0.6rem;
+	color: #2b2d42;
+}
+
+.select-group {
+	position: relative;
+}
+
+#sale-food-label {
+	font-family: "Merriweather Sans", sans-serif;
+	font-size: 1rem;
+	color: #2b2d42;
+}
+
+.arrow {
+	border: solid #2b2d42;
+	height: 0.3rem;
+	width: 0.3rem;
+	border-width: 0 0.1px 0.1px 0;
+	padding: 1px;
+	transform: rotate(45deg);
+}
+
+.option {
+	display: none;
+}
+
+.select-item {
+	display: block;
+	padding: 1rem;
+	font-weight: 400;
+	background-color: #fefefe;
+	color: #2b2d42;
+}
+
+.select-item:hover {
+	border-radius: 0.3rem;
+	background-color: #feeff1;
+}
+
+/* || Styling Statistics card */
+
+.statistics-card {
+	/* display: block; */
+	/* max-width: 30rem; */
+	margin-bottom: 0;
+}
+
+#statistics-card {
+	background-color: #f7f9fa;
+	display: block;
+	margin-block-start: 3.2rem;
+}
+
+.sales-card {
+	/* border: 1px solid #ef233c; */
+	border-radius: 0.3rem;
+	background-color: #f7f9fa;
+	/* padding: 2rem 1rem; */
+	margin-bottom: 3rem;
+}
+
+#sales-custom {
+	margin-bottom: 0;
+}
+
+/* - All time  */
+
+.item-card {
+	display: flex;
+	align-items: center;
+	/* justify-content: space-between; */
+}
+
+.item-card p {
+	font-size: 1.1rem;
+	color: #2b2d42;
+	font-weight: 300;
+	/* border: 1px solid #ef233c; */
+	position: relative;
+}
+
+.item-card :nth-child(1) {
+	left: 0;
+	min-width: 35%;
+	max-width: 35%;
+	border-inline-end: 1px solid #2b2d42;
+	padding-inline-end: 1.5rem;
+}
+
+.item-card :nth-child(2) {
+	left: 4%;
+	min-width: 40%;
+	max-width: 40%;
+	padding-inline-start: 1rem;
+}
+
+/* - Custom statistics */
+
+.custom-stats-btn-area {
+	display: grid;
+	grid-template-columns: 1fr 1.6fr 1.7fr;
+	gap: 0.4rem;
+	position: relative;
+}
+
+.custom-stats-btn-area span {
+	font-size: 0.8rem;
+}
+
+.dropdown-list {
+	margin: 0;
+	box-sizing: border-box;
+	position: absolute;
+	width: 100%;
+	background-color: #fefefe;
+	color: #2b2d42;
+	border: 1.1px solid #2b2d42;
+	border-radius: 0.3rem;
+	padding: 1rem 1.5rem;
+	z-index: +1;
+}
+
+.dropdown-sale {
+	top: 8.3rem;
+	height: 17rem;
+	box-sizing: border-box;
+	overflow: scroll;
+}
+
+.dropdown-stats {
+	overflow: scroll;
+	top: 0.5rem;
+	height: 13rem;
+	z-index: +1;
+	padding: 0.8rem 1.5rem;
+}
+
+.custom-data-card {
+	background-color: #eeeef4;
+	border-radius: 0 0 0.3rem 0.3rem;
+	margin-block-start: 2rem;
+	padding: 0;
+}
+
+.custom-data-title {
+	border-radius: 0.3rem 0.3rem 0 0;
+	background-color: #414464;
+	color: #fefefe;
+	padding: 1rem;
+	display: flex;
+	justify-content: space-around;
+	margin: 0;
+}
+
+.custom-data-title h2 {
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	font-size: 0.9rem;
+	word-spacing: 0.3rem;
+	border: none;
+}
+
+.custom-data-results {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 5rem;
+}
+
+.custom-data-results .item-card :nth-child(1) {
+	margin-inline-start: 1rem;
+	font-size: 0.9rem;
+	min-width: 39%;
+	max-width: 39%;
+}
+
+.custom-data-results .item-card :nth-child(2) {
+	font-size: 1rem;
+	color: #ef233c;
+	padding-inline-start: 0;
+}
+
+footer {
+	margin: 0;
+	width: 100%;
+	height: 3rem;
+	background-color: #2b2d42;
+	padding: 0;
+	margin-block-end: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.7rem;
+	font-weight: 200;
+}
+
+footer span {
+	font-size: 1rem;
+	font-family: "Grape Nuts", cursive;
+	letter-spacing: 1px;
+}
+
+#copywright-year {
+	font-family: "Merriweather Sans", sans-serif;
+	font-size: 0.7rem;
+}
+
+/* || Responsive design settings */
+@media (min-width: 600px) {
+	.main {
+		width: 90%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 3rem 0 0 0;
+	}
+
+	.card {
+		width: 70%;
+		margin: 0.1rem 0.1rem 3rem 0.1rem;
+	}
+
+	footer {
+		height: 4rem;
+	}
+}
+
+@media (min-width: 1050px) {
+	body {
+		width: 65%;
+		margin: auto;
+	}
+
+	/* .main {
+		width: 90%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 3rem 0 0 0;
+	} */
+
+	footer {
+		height: 5rem;
+	}
+}
+
+@media (min-width: 1500px) {
+	body {
+		width: 45%;
+	}
+}

@@ -1,0 +1,52 @@
+.swal-modal {
+	background-color: #2b2d42;
+}
+
+.swal-text {
+	font-size: 1.1rem;
+	word-spacing: 3px;
+	padding: 17px;
+	display: block;
+	text-align: center;
+	color: #d7e2e6;
+}
+
+.swal-footer {
+	text-align: center;
+}
+
+.swal-button {
+	text-decoration: none;
+	font-family: "Merriweather Sans", sans-serif;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 3.5rem;
+	width: 100%;
+	background-color: #d90429;
+	border: 1.1px solid #d90429;
+	border-radius: 0.3rem;
+	color: #eee;
+	position: relative;
+	font-size: 1rem;
+	word-spacing: 0.3rem;
+	font-weight: 400;
+	padding-inline-start: 2.5rem;
+	padding-inline-end: 2.5rem;
+	margin-block-end: 2rem;
+}
+
+.swal-button:not([disabled]):hover {
+	background-color: #ef233c;
+	border: 1px solid #ef233c;
+	color: #fff;
+}
+
+.swal-button:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.swal-overlay {
+	background-color: rgba(237, 242, 244, 0.85);
+}
