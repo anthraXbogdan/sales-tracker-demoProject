@@ -39,7 +39,8 @@ const sales = collection(db, "sales");
 const form = document.querySelector("#sale-form");
 const money = document.querySelector("#money");
 const items = document.querySelector("#items");
-const selectLabel = document.querySelector("#sale-food-label");
+const saleFoodBtn = document.querySelector("#sale-food-btn");
+const saleFoodLabel = document.querySelector("#sale-food-label");
 const submitSaleBtn = document.querySelector("#submit-sale-btn");
 const saleResetBtn = document.querySelector("#sale-reset-btn");
 const radioBntsSales = document.getElementsByName("radio-sales");
@@ -86,12 +87,15 @@ form.addEventListener("submit", async (event) => {
 			text: "Vânzare adăugată cu succes!",
 		});
 
-		selectLabel.textContent = "alege un tip de hrana";
+		saleFoodLabel.textContent = "alege un tip de hrana";
 		money.value = "";
 		items.value = "";
 		submitSaleBtn.disabled = true;
 		submitSaleBtn.classList.remove("btn-enabled");
 		saleResetBtn.classList.remove("btn-enabled");
+
+		saleFoodBtn.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
+		saleFoodLabel.style.color = "#8a8c97";
 
 		radioBntsSales.forEach((radioBtn) => {
 			radioBtn.checked = false;

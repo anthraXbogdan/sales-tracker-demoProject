@@ -17,8 +17,8 @@
 		
 		
 		
-		<script type="module" crossorigin src="/assets/index.702c0bb2.js"></script>
-		<link rel="stylesheet" href="/assets/index.1d34c597.css">
+		<script type="module" crossorigin src="/assets/index.35bf3551.js"></script>
+		<link rel="stylesheet" href="/assets/index.d86a2c6a.css">
 	</head>
 
 	<body>
@@ -51,27 +51,57 @@
 					</div>
 
 					<label for="money">Valoare (lei)</label>
-					<input
-						type="number"
-						name="money"
-						id="money"
-						required
-						oninvalid="this.setCustomValidity('Te rog adauga valoarea (lei)')"
-						;
-						placeholder="0 lei"
-						min="0"
-					/>
+					<div class="data-input-wrapper">
+						<input
+							type="number"
+							name="money"
+							id="money"
+							placeholder="Ex: 30"
+							min="0"
+							pattern="^[0-9]*$"
+							required
+						/>
+						<button
+							class="button spinnerBtn"
+							id="moneySpinnerDec"
+							type="button"
+						>
+							-
+						</button>
+						<button
+							class="button spinnerBtn"
+							id="moneySpinnerInc"
+							type="button"
+						>
+							+
+						</button>
+					</div>
 
 					<label for="items">Bucăți</label>
-					<input
-						type="number"
-						name="items"
-						id="items"
-						required
-						oninvalid="this.setCustomValidity('Te rog adauga nr. de bucati')"
-						placeholder="0 buc"
-						min="0"
-					/>
+					<div class="data-input-wrapper">
+						<input
+							type="number"
+							name="items"
+							id="items"
+							placeholder="Ex: 50"
+							min="0"
+							required
+						/>
+						<button
+							class="button spinnerBtn"
+							id="itemsSpinnerDec"
+							type="button"
+						>
+							-
+						</button>
+						<button
+							class="button spinnerBtn"
+							id="itemsSpinnerInc"
+							type="button"
+						>
+							+
+						</button>
+					</div>
 
 					<div class="show-buttons-layout">
 						<button
