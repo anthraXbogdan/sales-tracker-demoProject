@@ -85,7 +85,7 @@ dropdownSale.addEventListener("click", (event) => {
 
 // Sales form behavior logic for `money` and `items` input
 // (validity check)
-const regex = new RegExp("^[0-9]+$");
+const regex = new RegExp("^[0-9]{1,4}$");
 
 money.addEventListener("input", (event) => {
 	event.preventDefault();
@@ -199,8 +199,8 @@ moneySpinnerDec.addEventListener("click", (event) => {
 	money.style.backgroundColor = "#fff";
 	money.style.color = "#2b2d42";
 
-	if (money.value > 0) {
-		money.value = getNumber(money.value) - 1;
+	if (money.value > 5) {
+		money.value = getNumber(money.value) - 5;
 	}
 });
 
@@ -213,7 +213,7 @@ moneySpinnerInc.addEventListener("click", (event) => {
 	if (money.value === "") {
 		money.value += 0;
 	}
-	money.value = getNumber(money.value) + 1;
+	money.value = getNumber(money.value) + 5;
 	saleResetBtn.classList.add("btn-enabled");
 
 	if (foodValue === "food" && itemsValue === "items") {
