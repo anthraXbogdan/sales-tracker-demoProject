@@ -1,3 +1,5 @@
+@import url("../custom-variables.css");
+
 .show-buttons-layout {
 	display: flex;
 	justify-content: space-between;
@@ -12,10 +14,10 @@
 	align-items: center;
 	height: 3.3rem;
 	width: 100%;
-	background-color: #8d99ae;
-	border: 1.1px solid #8d99ae;
+	background-color: var(--button-disabled-background-color);
+	color: var(--button-disabled-color);
+	border: none;
 	border-radius: 0.3rem;
-	color: #fff;
 	position: relative;
 	font-size: 1rem;
 	word-spacing: 0.3rem;
@@ -26,33 +28,38 @@
 	text-align: center;
 }
 
+.button:disabled {
+	background-color: var(--button-disabled-background-color);
+	color: var(--button-disabled-color);
+}
+
+.button:disabled:hover {
+	background-color: var(--button-disabled-background-color);
+	color: var(--button-disabled-color);
+}
+
 .button:active {
-	background-color: #8a8c97;
-	border: 1px solid #8a8c97;
-	color: #2b2d42;
-	transition: 0s;
+	appearance: none;
 }
 
 .btn-enabled {
-	background-color: #2b2c42;
-	border: 1.1px solid #2b2c42;
+	background-color: var(--button-enabled-background-color);
+	border: none;
+	color: var(--button-enabled-color);
 }
 
 .addSevenRem {
 	margin-top: 7rem;
 }
 
-.btn-disabled {
-	background-color: #8d99ae;
-}
-
 #sale-food-btn {
-	background-color: rgba(239, 35, 60, 0.2);
+	background-color: var(--invalid-background-color);
+	color: var(--invalid-color);
 }
 
 .dropdown-btn {
-	background-color: #fefefe;
-	color: #2b2d42;
+	background-color: var(--input-field-background-color);
+	color: var(--input-field-color);
 }
 
 .submit-btn {
@@ -73,7 +80,7 @@
 
 .reset-btn,
 .submit-btn {
-	transition: 0.8s;
+	transition: 0.2s;
 }
 
 .custom-stats-btn-area .button {
@@ -83,29 +90,39 @@
 .submit-btn:focus,
 .reset-btn:focus {
 	outline: none;
-	background-color: #2b2c42;
+	background-color: var(--button-enabled-background-color);
+	border: 1px solid red;
 }
 
 .submit-btn:hover,
 .reset-btn:hover {
-	background-color: #363852;
-	border: 1px solid #363852;
+	background-color: var(--button-enabled-hover-background-color);
+	border: none;
 	color: #fff;
 }
 
 /* Spinner buttons */
 .spinnerBtn {
 	justify-content: center;
-	background-color: #2b2c42;
-	border: 1.1px solid #2b2c42;
+	background-color: var(--spinner-button-background-color);
+	border: none;
 	font-size: 2rem;
 	font-weight: 400;
-	color: #fff;
-	transition: 0.6s;
+	color: var(--spinner-button-color);
+	transition: 0.2s;
+}
+
+.spinnerBtn:hover {
+	border: none;
 }
 
 .spinnerBtn:active {
 	background-color: #8a8c97;
-	border: 1px solid #8a8c97;
-	color: #2b2d42;
+	border: none;
+	color: #2c2f33;
+}
+
+.spinnerBtn:focus {
+	outline: none;
+	border: none;
 }

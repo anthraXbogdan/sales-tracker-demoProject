@@ -4,6 +4,7 @@ import swal from "sweetalert";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 import { displayDropdownParams } from "./src/dropdown-stats";
+import { toggleTheme } from ".//src/helper";
 
 import {
 	getMonth,
@@ -13,7 +14,11 @@ import {
 	getCustomStats,
 } from ".//src/helper";
 
-import { displayDropdownSale } from "./src/dropdown-sale";
+import {
+	displayDropdownSale,
+	setMoneyValue,
+	setItemsValue,
+} from "./src/dropdown-sale";
 
 const date = new Date();
 
@@ -34,6 +39,9 @@ const db = getFirestore(app);
 const sales = collection(db, "sales");
 
 // Grab elements from DOM
+
+// - DOM elements for nav
+const themeBtn = document.querySelector("#theme-button");
 
 // - DOM elements for the Sales form card
 const form = document.querySelector("#sale-form");
@@ -63,6 +71,12 @@ const copywrightYear = document.querySelector("#copywright-year");
 export const salesItems = [];
 displayDropdownSale();
 
+// Change Dark/Light theme
+themeBtn.addEventListener("click", (e) => {
+	e.preventDefault();
+	toggleTheme(document.documentElement);
+});
+
 // Submitting data introduced in the sales form card
 form.addEventListener("submit", async (event) => {
 	event.preventDefault();
@@ -90,12 +104,15 @@ form.addEventListener("submit", async (event) => {
 		saleFoodLabel.textContent = "alege un tip de hrana";
 		money.value = "";
 		items.value = "";
+		setMoneyValue("");
+		setItemsValue("");
 		submitSaleBtn.disabled = true;
 		submitSaleBtn.classList.remove("btn-enabled");
+		saleResetBtn.disabled = true;
 		saleResetBtn.classList.remove("btn-enabled");
 
-		saleFoodBtn.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-		saleFoodLabel.style.color = "#8a8c97";
+		saleFoodBtn.style.backgroundColor = "var(--invalid-background-color)";
+		saleFoodLabel.style.color = "var(--invalid-color)";
 
 		radioBntsSales.forEach((radioBtn) => {
 			radioBtn.checked = false;
