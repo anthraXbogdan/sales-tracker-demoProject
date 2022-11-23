@@ -62,6 +62,22 @@ export const toggleHidden = (element) => {
 	element.classList.toggle("hidden");
 };
 
+const lightThemeIcon = document.querySelector("#light-theme-icon");
+const darkThemeIcon = document.querySelector("#dark-theme-icon");
+
+// Toggle dark/light theme
+export const toggleTheme = (element) => {
+	element.classList.toggle("dark");
+
+	if (element.classList.contains("dark")) {
+		lightThemeIcon.hidden = false;
+		darkThemeIcon.hidden = true;
+	} else {
+		lightThemeIcon.hidden = true;
+		darkThemeIcon.hidden = false;
+	}
+};
+
 export const setSelectTitle = (event) => {
 	const labelElement = document.querySelector(
 		`label[for="${event.target.id}"]`

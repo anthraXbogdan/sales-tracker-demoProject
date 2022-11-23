@@ -27,6 +27,11 @@ const radionBtnsFoods = document.getElementsByName("radio-foods");
 
 const showBtnsLayout = document.querySelector("#stats-buttons-layout");
 
+const yearArrow = document.querySelector("#year-arrow");
+const monthArrow = document.querySelector("#month-arrow");
+const foodArrow = document.querySelector("#food-arrow");
+
+statsResetBtn.disabled = true;
 showStatBtn.disabled = true;
 
 // Toggle dropdown list of options for a statistics parameter (year, month or food)
@@ -34,21 +39,27 @@ const toggleOptions = (
 	toggleBtn,
 	optionsElement,
 	secondElement,
-	thirdElement
+	secondElementArrow,
+	thirdElement,
+	thirdElementArrow,
+	arrow
 ) => {
 	toggleBtn.addEventListener("click", (event) => {
 		event.preventDefault();
+		arrow.classList.toggle("rotate-arrow");
 
 		toggleHidden(optionsElement);
 		showBtnsLayout.classList.toggle("addSevenRem");
 
 		if (!secondElement.classList.contains("hidden")) {
 			toggleHidden(secondElement);
+			secondElementArrow.classList.toggle("rotate-arrow");
 			showBtnsLayout.classList.toggle("addSevenRem");
 		}
 
 		if (!thirdElement.classList.contains("hidden")) {
 			toggleHidden(thirdElement);
+			thirdElementArrow.classList.toggle("rotate-arrow");
 			showBtnsLayout.classList.toggle("addSevenRem");
 		}
 	});
@@ -58,19 +69,28 @@ toggleOptions(
 	statsYearBtn,
 	dropdownStatsYear,
 	dropdownStatsMonth,
-	dropdownStatsFood
+	monthArrow,
+	dropdownStatsFood,
+	foodArrow,
+	yearArrow
 );
 toggleOptions(
 	statsMonthBtn,
 	dropdownStatsMonth,
 	dropdownStatsYear,
-	dropdownStatsFood
+	yearArrow,
+	dropdownStatsFood,
+	foodArrow,
+	monthArrow
 );
 toggleOptions(
 	statsFoodBtn,
 	dropdownStatsFood,
 	dropdownStatsYear,
-	dropdownStatsMonth
+	yearArrow,
+	dropdownStatsMonth,
+	monthArrow,
+	foodArrow
 );
 
 // Arrays for the statistics parameters
@@ -121,14 +141,18 @@ displayDropdownParams(months, dropdownStatsMonth, "months");
 displayDropdownParams(foods, dropdownStatsFood, "foods");
 
 // Display the selected statistics paramters
-const setButtonLabel = (dropdownElement, labelElement, placeholder) => {
+const setButtonLabel = (dropdownElement, labelElement, placeholder, arrow) => {
 	dropdownElement.addEventListener("click", (event) => {
 		if (event.target.classList.contains("radio-stats")) {
 			labelElement.textContent = setSelectTitle(event);
 			toggleHidden(dropdownElement);
+			console.log("hide dropdown");
+			arrow.classList.toggle("rotate-arrow");
+
 			showBtnsLayout.classList.toggle("addSevenRem");
 
 			if (event.target.value != placeholder) {
+				statsResetBtn.disabled = false;
 				statsResetBtn.classList.add("btn-enabled");
 			}
 
@@ -137,6 +161,7 @@ const setButtonLabel = (dropdownElement, labelElement, placeholder) => {
 				statsMonthLabel.textContent.toLowerCase().trim() === "luna" &&
 				statsFoodLabel.textContent.toLowerCase().trim() === "hrana"
 			) {
+				statsResetBtn.disabled = true;
 				statsResetBtn.classList.remove("btn-enabled");
 				showStatBtn.classList.remove("btn-enabled");
 			}
@@ -155,9 +180,9 @@ const setButtonLabel = (dropdownElement, labelElement, placeholder) => {
 	});
 };
 
-setButtonLabel(dropdownStatsYear, statsYearLabel, "anul");
-setButtonLabel(dropdownStatsMonth, statsMonthLabel, "luna");
-setButtonLabel(dropdownStatsFood, statsFoodLabel, "hrana");
+setButtonLabel(dropdownStatsYear, statsYearLabel, "anul", yearArrow);
+setButtonLabel(dropdownStatsMonth, statsMonthLabel, "luna", monthArrow);
+setButtonLabel(dropdownStatsFood, statsFoodLabel, "hrana", foodArrow);
 
 let itemsSold = 0;
 let sum = 0;
@@ -192,11 +217,14 @@ showStatBtn.addEventListener("click", (event) => {
 	});
 
 	showStatBtn.disabled = true;
+	showStatBtn.classList.remove("btn-enabled");
+	statsResetBtn.disabled = true;
+	statsResetBtn.classList.remove("btn-enabled");
 	statsYearLabel.textContent = "Anul";
 	statsMonthLabel.textContent = "Luna";
 	statsFoodLabel.textContent = "Hrana";
 	statsResetBtn.classList.remove("btn-enabled");
-	showStatBtn.classList.remove("btn-enabled");
+
 	showStatBtn.blur();
 });
 
@@ -208,7 +236,10 @@ statsResetBtn.addEventListener("click", (event) => {
 	statsMonthLabel.textContent = "Luna";
 	statsFoodLabel.textContent = "Hrana";
 
+	statsResetBtn.disabled = true;
 	statsResetBtn.classList.remove("btn-enabled");
+	showStatBtn.disabled = true;
+	showStatBtn.classList.remove("btn-enabled");
 
 	radioBtnsYears.forEach((radioBtn) => {
 		radioBtn.checked = false;

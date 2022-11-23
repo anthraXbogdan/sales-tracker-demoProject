@@ -10,11 +10,18 @@ const items = document.querySelector("#items");
 const dropdownSalesRadioButtonsArray =
 	document.getElementsByName("radio-sales");
 
-submitSaleBtn.disabled = true;
+const arrow = document.querySelector("#sale-food-btn-arrow");
 
 export let foodValue = "";
-let moneyValue = "";
-let itemsValue = "";
+export let moneyValue = "";
+export let itemsValue = "";
+
+export function setMoneyValue(value) {
+	moneyValue = value;
+}
+export function setItemsValue(value) {
+	itemsValue = value;
+}
 
 export const displayDropdownSale = () => {
 	const foods = [
@@ -46,6 +53,7 @@ export const displayDropdownSale = () => {
 saleFoodBtn.addEventListener("click", (event) => {
 	event.preventDefault();
 
+	arrow.classList.toggle("rotate-arrow");
 	toggleHidden(dropdownSale);
 	toggleHidden(saleResetBtn);
 	toggleHidden(submitSaleBtn);
@@ -58,22 +66,25 @@ dropdownSale.addEventListener("click", (event) => {
 		toggleHidden(dropdownSale);
 		toggleHidden(saleResetBtn);
 		toggleHidden(submitSaleBtn);
+		arrow.classList.toggle("rotate-arrow");
 	}
 
 	if (event.target.value === "alege") {
 		foodValue = "";
-		saleFoodBtn.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-		saleFoodLabel.style.color = "#8a8c97";
+		saleFoodBtn.style.backgroundColor = "var(--invalid-background-color)";
+		saleFoodLabel.style.color = "var(--invalid-color)";
 		submitSaleBtn.classList.remove("btn-enabled");
 		submitSaleBtn.disabled = true;
 
 		if (money.value === "" && items.value === "") {
+			submitSaleBtn.disabled = true;
 			saleResetBtn.classList.remove("btn-enabled");
 		}
 	} else {
 		foodValue = "food";
-		saleFoodBtn.style.backgroundColor = "#fff";
-		saleFoodLabel.style.color = "#2b2d42";
+		saleFoodBtn.style.backgroundColor = "var(--input-field-background-color)";
+		saleFoodLabel.style.color = "var(--input-field-color)";
+		saleResetBtn.disabled = false;
 		saleResetBtn.classList.add("btn-enabled");
 
 		if (moneyValue === "money" && itemsValue === "items") {
@@ -85,16 +96,24 @@ dropdownSale.addEventListener("click", (event) => {
 
 // Sales form behavior logic for `money` and `items` input
 // (validity check)
+saleResetBtn.disabled = true;
+submitSaleBtn.disabled = true;
 const regex = new RegExp("^[0-9]{1,4}$");
 
 money.addEventListener("input", (event) => {
 	event.preventDefault();
 
+	if (event.target.value !== "") {
+		saleResetBtn.disabled = false;
+		saleResetBtn.classList.add("btn-enabled");
+	} else {
+		if (foodValue !== "food" && itemsValue !== "items") {
+			saleResetBtn.disabled = true;
+		}
+	}
+
 	if (regex.test(event.target.value)) {
 		moneyValue = "money";
-		saleResetBtn.classList.add("btn-enabled");
-		money.style.backgroundColor = "#fff";
-		money.style.color = "#2b2d42";
 
 		if (foodValue === "food" && itemsValue === "items") {
 			submitSaleBtn.classList.add("btn-enabled");
@@ -107,26 +126,28 @@ money.addEventListener("input", (event) => {
 	) {
 		saleResetBtn.classList.remove("btn-enabled");
 		moneyValue = "";
-		money.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-		money.style.color = "#8a8c97";
 	} else {
 		moneyValue = "";
 		submitSaleBtn.classList.remove("btn-enabled");
 		submitSaleBtn.disabled = true;
 		saleResetBtn.classList.add("btn-enabled");
-		money.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-		money.style.color = "#8a8c97";
 	}
 });
 
 items.addEventListener("input", (event) => {
 	event.preventDefault();
 
+	if (event.target.value !== "") {
+		saleResetBtn.disabled = false;
+	} else {
+		if (foodValue !== "food" && moneyValue !== "money") {
+			saleResetBtn.disabled = true;
+		}
+	}
+
 	if (regex.test(event.target.value)) {
 		itemsValue = "items";
 		saleResetBtn.classList.add("btn-enabled");
-		items.style.backgroundColor = "#fff";
-		items.style.color = "#2b2d42";
 
 		if (foodValue === "food" && moneyValue === "money") {
 			submitSaleBtn.classList.add("btn-enabled");
@@ -139,15 +160,11 @@ items.addEventListener("input", (event) => {
 	) {
 		saleResetBtn.classList.remove("btn-enabled");
 		itemsValue = "";
-		items.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-		items.style.color = "#8a8c97";
 	} else {
 		itemsValue = "";
 		submitSaleBtn.classList.remove("btn-enabled");
 		submitSaleBtn.disabled = true;
 		saleResetBtn.classList.add("btn-enabled");
-		items.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-		items.style.color = "#8a8c97";
 	}
 });
 
@@ -156,15 +173,10 @@ saleResetBtn.addEventListener("click", (event) => {
 	saleResetBtn.blur();
 
 	saleFoodLabel.textContent = "alege un tip de hrană";
-	saleFoodBtn.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-	saleFoodLabel.style.color = "#8a8c97";
+	saleFoodBtn.style.backgroundColor = "var(--invalid-background-color)";
+	saleFoodLabel.style.color = "var(--invalid-color)";
 	money.value = "";
-	money.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-	money.style.color = "#8a8c97";
 	items.value = "";
-	items.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-	items.style.color = "#8a8c97";
-
 	foodValue = "";
 	moneyValue = "";
 	itemsValue = "";
@@ -174,17 +186,16 @@ saleResetBtn.addEventListener("click", (event) => {
 	});
 
 	submitSaleBtn.disabled = true;
-	saleResetBtn.classList.remove("btn-enabled");
 	submitSaleBtn.classList.remove("btn-enabled");
+	saleResetBtn.disabled = true;
+	saleResetBtn.classList.remove("btn-enabled");
 });
 
 // Sales form `submit` button logic
 submitSaleBtn.addEventListener("click", (event) => {
 	foodValue = "";
-	money.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-	money.style.color = "#8a8c97";
-	items.style.backgroundColor = "rgba(239, 35, 60, 0.2)";
-	items.style.color = "#8a8c97";
+	saleResetBtn.disabled = true;
+	submitSaleBtn.disabled = true;
 });
 
 // Sales form Spinner buttons logic
@@ -196,8 +207,7 @@ const itemsSpinnerInc = document.querySelector("#itemsSpinnerInc");
 moneySpinnerDec.addEventListener("click", (event) => {
 	event.preventDefault();
 	moneyValue = "money";
-	money.style.backgroundColor = "#fff";
-	money.style.color = "#2b2d42";
+	saleResetBtn.disabled = false;
 
 	if (money.value > 5) {
 		money.value = getNumber(money.value) - 5;
@@ -207,8 +217,7 @@ moneySpinnerDec.addEventListener("click", (event) => {
 moneySpinnerInc.addEventListener("click", (event) => {
 	event.preventDefault();
 	moneyValue = "money";
-	money.style.backgroundColor = "#fff";
-	money.style.color = "#2b2d42";
+	saleResetBtn.disabled = false;
 
 	if (money.value === "") {
 		money.value += 0;
@@ -225,8 +234,7 @@ moneySpinnerInc.addEventListener("click", (event) => {
 itemsSpinnerDec.addEventListener("click", (event) => {
 	event.preventDefault();
 	itemsValue = "items";
-	items.style.backgroundColor = "#fff";
-	items.style.color = "#2b2d42";
+	saleResetBtn.disabled = false;
 
 	if (items.value > 10) {
 		items.value = getNumber(items.value) - 10;
@@ -236,8 +244,7 @@ itemsSpinnerDec.addEventListener("click", (event) => {
 itemsSpinnerInc.addEventListener("click", (event) => {
 	event.preventDefault();
 	itemsValue = "items";
-	items.style.backgroundColor = "#fff";
-	items.style.color = "#2b2d42";
+	saleResetBtn.disabled = false;
 
 	if (items.value === "") {
 		items.value += 0;
