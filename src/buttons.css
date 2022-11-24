@@ -91,7 +91,7 @@
 .reset-btn:focus {
 	outline: none;
 	background-color: var(--button-enabled-background-color);
-	border: 1px solid red;
+	border: none;
 }
 
 .submit-btn:hover,

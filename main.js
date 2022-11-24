@@ -26,6 +26,8 @@ const date = new Date();
 const firebaseConfig = {
 	apiKey: "AIzaSyCMSw_jpYL--CtqKFuwVuVbvdeRZ19nKa8",
 	authDomain: "sales-tracker-demoprojec-7ad2d.firebaseapp.com",
+	databaseURL:
+		"https://sales-tracker-demoprojec-7ad2d-default-rtdb.europe-west1.firebasedatabase.app",
 	projectId: "sales-tracker-demoprojec-7ad2d",
 	storageBucket: "sales-tracker-demoprojec-7ad2d.appspot.com",
 	messagingSenderId: "843330215009",
@@ -35,6 +37,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 const sales = collection(db, "sales");
 
@@ -78,23 +82,26 @@ themeBtn.addEventListener("click", (e) => {
 });
 
 // Submitting data introduced in the sales form card
-form.addEventListener("submit", async (event) => {
-	// event.preventDefault();
-	console.log("submitted");
-
+// !!! Very important: when submit to Firestore DB use the submit button(type 'submit')
+//     with event type 'click' instead of submitting the form with event type 'submit'.
+//     For the second variant the submit works only in Firefox browser.
+//     With first variant the submit works on every browser.
+submitSaleBtn.addEventListener("click", async (e) => {
+	e.preventDefault();
 	const data = [...new FormData(form)];
 
 	try {
 		// Clear the array (delete all data in it)
 		salesItems.splice(0, salesItems.length);
 
-		const docRef = await addDoc(sales, {
+		const docRef = await addDoc(collection(db, "sales"), {
 			type: `${data[0][1]}`,
 			money: `${money.value}`,
 			items: `${items.value}`,
 			year: getYear(date),
 			month: getMonth(date),
 		});
+		console.log(docRef.id);
 
 		// Sale form submitting alert
 		// SweetAlert - swal("Vanzare adaugata cu succes!");
