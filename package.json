@@ -12,7 +12,7 @@
     "vite": "^3.1.0"
   },
   "dependencies": {
-    "firebase": "^9.10.0",
+    "firebase": "^9.14.0",
     "sweetalert": "^2.1.2"
   }
 }

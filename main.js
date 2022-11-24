@@ -79,7 +79,8 @@ themeBtn.addEventListener("click", (e) => {
 
 // Submitting data introduced in the sales form card
 form.addEventListener("submit", async (event) => {
-	event.preventDefault();
+	// event.preventDefault();
+	console.log("submitted");
 
 	const data = [...new FormData(form)];
 
