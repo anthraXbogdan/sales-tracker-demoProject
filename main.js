@@ -26,8 +26,6 @@ const date = new Date();
 const firebaseConfig = {
 	apiKey: "AIzaSyCMSw_jpYL--CtqKFuwVuVbvdeRZ19nKa8",
 	authDomain: "sales-tracker-demoprojec-7ad2d.firebaseapp.com",
-	databaseURL:
-		"https://sales-tracker-demoprojec-7ad2d-default-rtdb.europe-west1.firebasedatabase.app",
 	projectId: "sales-tracker-demoprojec-7ad2d",
 	storageBucket: "sales-tracker-demoprojec-7ad2d.appspot.com",
 	messagingSenderId: "843330215009",

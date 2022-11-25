@@ -7,12 +7,12 @@
 	scrollbar-width: auto;
 	scrollbar-color: var(--scrollbar-thumb-color)
 		var(--scrollbar-background-color); /* scroll thumb and track */
+	scroll-snap-type: proximity;
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-	height: 100%;
-	width: 3px;
+	width: 12px;
 }
 
 *::-webkit-scrollbar-track {
@@ -21,8 +21,7 @@
 
 *::-webkit-scrollbar-thumb {
 	background-color: var(--scrollbar-thumb-color);
-	border-radius: 0.6rem;
-	border: 1px solid var(--scrollbar-border-color);
+	border: 3px solid var(--scrollbar-border-color);
 }
 
 html {
@@ -205,20 +204,24 @@ main h1 {
 	margin: 0;
 	box-sizing: border-box;
 	position: absolute;
-	width: 100.1%;
+	width: 100%;
 	background-color: var(--dropdown-list-background-color);
 	color: var(--dropdown-list-color);
-	border: 1px solid var(--dropdown-list-border-color);
-	border-radius: 0 0 0.3rem 0.3rem;
+	/* border: 2px solid var(--dropdown-list-border-color); */
+	border-radius: 0;
 	padding: 1rem 1.5rem;
 	z-index: +1;
 	overflow-x: hidden;
+	/* Prevent background color leak outs */
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
 }
 
 /* || Styling Sales-form card */
 .dropdown-sale {
-	top: 8.3rem;
-	height: 17rem;
+	top: 8.9rem;
+	height: 17.5rem;
 	box-sizing: border-box;
 }
 
@@ -277,6 +280,7 @@ label {
 	font-size: 1rem;
 	padding: 2rem 0 0.6rem;
 	color: var(--label-color);
+	margin: 0.5rem 0;
 }
 
 .select-group {
