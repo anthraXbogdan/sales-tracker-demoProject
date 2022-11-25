@@ -82,10 +82,8 @@ themeBtn.addEventListener("click", (e) => {
 });
 
 // Submitting data introduced in the sales form card
-// !!! Very important: when submit to Firestore DB use the submit button(type 'submit')
-//     with event type 'click' instead of submitting the form with event type 'submit'.
-//     For the second variant the submit works only in Firefox browser.
-//     With first variant the submit works on every browser.
+
+// !!! Very important: when submit to Firestore DB use the submit button(type 'submit') with event type 'click' instead of submitting the form with event type 'submit'. For the second variant the submit works only in Firefox browser. With first variant the submit works on every browser.
 submitSaleBtn.addEventListener("click", async (e) => {
 	e.preventDefault();
 	const data = [...new FormData(form)];

@@ -1,4 +1,9 @@
 :root {
+	/* Scrollbar colors */
+	--scrollbar-thumb-color: #4e545c7e;
+	--scrollbar-background-color: #f4f4f8;
+	--scrollbar-border-color: #4e545c7e;
+
 	--html-background-color: #f6f6f6;
 	--body-background-color: rgba(220, 221, 222, 0.3);
 	--primary-color: #000;
@@ -21,9 +26,9 @@
 	--dropdown-list-selected-color: #fefefe;
 	--dropdown-list-selected-background-color: #5667a4;
 	--dropdown-list-color: #2c2f33;
-	--dropdown-list-background-color: #fefefe;
+	--dropdown-list-background-color: #fff;
 	--dropdown-list-background-color-hover: #e2e8ff;
-	--dropdown-list-border: #c8d2ff;
+	--dropdown-list-border-color: #969ee6;
 
 	/* buttons-general-colors */
 	--button-border-unfocused: #8d99ae;
@@ -54,9 +59,18 @@
 	/* spinner-buttons-colors */
 	--spinner-button-background-color: #444850;
 	--spinner-button-color: #f0e8e8;
+
+	--highlight-selected-background-color: #fff;
+	--highlight-selected-border-color: #969ee6;
+	--stats-dropdown-btn-background-color: #e6e6ea;
 }
 
 .dark {
+	/* Scrollbar colors */
+	--scrollbar-thumb-color: #6c76e2;
+	--scrollbar-background-color: #2c2f33;
+	--scrollbar-border-color: #6c76e2;
+
 	--html-background-color: #23272a;
 	--body-background-color: #2c2f33;
 	--primary-color: #fff;
@@ -81,7 +95,7 @@
 	--dropdown-list-background-color: #2c2f33;
 	--dropdown-list-color: #ddd;
 	--dropdown-list-background-color-hover: #3c424a;
-	--dropdown-list-border: #2c2f33;
+	--dropdown-list-border-color: #2c2f33;
 
 	/* buttons-general-colors */
 	--button-border-unfocused: #eee;
@@ -111,4 +125,8 @@
 	/* spinner-buttons-colors */
 	--spinner-button-background-color: #ed4245;
 	--spinner-button-color: #f0e8e8;
+
+	--highlight-selected-background-color: #2c2f33;
+	--highlight-selected-border-color: #2c2f33;
+	--stats-dropdown-btn-background-color: #3c424a;
 }

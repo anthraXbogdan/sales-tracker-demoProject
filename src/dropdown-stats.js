@@ -42,14 +42,19 @@ const toggleOptions = (
 	secondElementArrow,
 	thirdElement,
 	thirdElementArrow,
-	arrow
+	arrow,
+	secondBtn,
+	thirdBtn
 ) => {
 	toggleBtn.addEventListener("click", (event) => {
 		event.preventDefault();
 		arrow.classList.toggle("rotate-arrow");
+		toggleBtn.classList.toggle("highlightSelected");
 
 		toggleHidden(optionsElement);
 		showBtnsLayout.classList.toggle("addSevenRem");
+		secondBtn.classList.remove("highlightSelected");
+		thirdBtn.classList.remove("highlightSelected");
 
 		if (!secondElement.classList.contains("hidden")) {
 			toggleHidden(secondElement);
@@ -72,7 +77,9 @@ toggleOptions(
 	monthArrow,
 	dropdownStatsFood,
 	foodArrow,
-	yearArrow
+	yearArrow,
+	statsMonthBtn,
+	statsFoodBtn
 );
 toggleOptions(
 	statsMonthBtn,
@@ -81,7 +88,9 @@ toggleOptions(
 	yearArrow,
 	dropdownStatsFood,
 	foodArrow,
-	monthArrow
+	monthArrow,
+	statsYearBtn,
+	statsFoodBtn
 );
 toggleOptions(
 	statsFoodBtn,
@@ -90,7 +99,9 @@ toggleOptions(
 	yearArrow,
 	dropdownStatsMonth,
 	monthArrow,
-	foodArrow
+	foodArrow,
+	statsYearBtn,
+	statsMonthBtn
 );
 
 // Arrays for the statistics parameters
@@ -141,12 +152,18 @@ displayDropdownParams(months, dropdownStatsMonth, "months");
 displayDropdownParams(foods, dropdownStatsFood, "foods");
 
 // Display the selected statistics paramters
-const setButtonLabel = (dropdownElement, labelElement, placeholder, arrow) => {
+const setButtonLabel = (
+	dropdownElement,
+	labelElement,
+	placeholder,
+	arrow,
+	button
+) => {
 	dropdownElement.addEventListener("click", (event) => {
 		if (event.target.classList.contains("radio-stats")) {
 			labelElement.textContent = setSelectTitle(event);
 			toggleHidden(dropdownElement);
-			console.log("hide dropdown");
+			button.classList.toggle("highlightSelected");
 			arrow.classList.toggle("rotate-arrow");
 
 			showBtnsLayout.classList.toggle("addSevenRem");
@@ -180,9 +197,27 @@ const setButtonLabel = (dropdownElement, labelElement, placeholder, arrow) => {
 	});
 };
 
-setButtonLabel(dropdownStatsYear, statsYearLabel, "anul", yearArrow);
-setButtonLabel(dropdownStatsMonth, statsMonthLabel, "luna", monthArrow);
-setButtonLabel(dropdownStatsFood, statsFoodLabel, "hrana", foodArrow);
+setButtonLabel(
+	dropdownStatsYear,
+	statsYearLabel,
+	"anul",
+	yearArrow,
+	statsYearBtn
+);
+setButtonLabel(
+	dropdownStatsMonth,
+	statsMonthLabel,
+	"luna",
+	monthArrow,
+	statsMonthBtn
+);
+setButtonLabel(
+	dropdownStatsFood,
+	statsFoodLabel,
+	"hrana",
+	foodArrow,
+	statsFoodBtn
+);
 
 let itemsSold = 0;
 let sum = 0;

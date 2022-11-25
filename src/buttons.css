@@ -36,6 +36,7 @@
 .button:disabled:hover {
 	background-color: var(--button-disabled-background-color);
 	color: var(--button-disabled-color);
+	cursor: auto;
 }
 
 .button:active {
@@ -58,8 +59,14 @@
 }
 
 .dropdown-btn {
-	background-color: var(--input-field-background-color);
+	background-color: var(--stats-dropdown-btn-background-color);
 	color: var(--input-field-color);
+}
+
+.highlightSelected {
+	border: 1px solid var(--highlight-selected-border-color);
+	background-color: var(--highlight-selected-background-color);
+	border-radius: 0.3rem 0.3rem 0 0;
 }
 
 .submit-btn {

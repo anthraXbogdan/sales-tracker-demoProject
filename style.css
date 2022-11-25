@@ -1,6 +1,30 @@
 /* || General styles */
 @import url("./custom-variables.css");
 
+/* Scrollbar styles */
+/* Works on Firefox */
+* {
+	scrollbar-width: auto;
+	scrollbar-color: var(--scrollbar-thumb-color)
+		var(--scrollbar-background-color); /* scroll thumb and track */
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	height: 100%;
+	width: 3px;
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--scrollbar-background-color);
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb-color);
+	border-radius: 0.6rem;
+	border: 1px solid var(--scrollbar-border-color);
+}
+
 html {
 	font-family: "Merriweather Sans", sans-serif;
 	background-color: var(--html-background-color);
@@ -61,7 +85,7 @@ nav {
 	background-color: var(--nav-background-color);
 	position: sticky;
 	top: 0;
-	z-index: +1;
+	z-index: +2;
 }
 
 nav h2 {
@@ -89,6 +113,7 @@ nav h2 {
 	background-color: #3c424a;
 	background-color: transparent;
 	color: #f0e8e8;
+	cursor: pointer;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -176,16 +201,18 @@ main h1 {
 }
 
 .dropdown-list {
+	appearance: none;
 	margin: 0;
 	box-sizing: border-box;
 	position: absolute;
-	width: 100%;
+	width: 100.1%;
 	background-color: var(--dropdown-list-background-color);
 	color: var(--dropdown-list-color);
-	border: 1.1px solid var(--dropdown-list-border);
-	border-radius: 0.3rem;
+	border: 1px solid var(--dropdown-list-border-color);
+	border-radius: 0 0 0.3rem 0.3rem;
 	padding: 1rem 1.5rem;
-	z-index: +100;
+	z-index: +1;
+	overflow-x: hidden;
 }
 
 /* || Styling Sales-form card */
@@ -193,7 +220,6 @@ main h1 {
 	top: 8.3rem;
 	height: 17rem;
 	box-sizing: border-box;
-	overflow: scroll;
 }
 
 input {
@@ -243,7 +269,6 @@ input[type="number"]::placeholder {
 
 *:focus {
 	outline: none;
-	/* border: 1.1px solid var(--button-border-focused); */
 }
 
 label {
@@ -287,12 +312,14 @@ label {
 	padding: 1rem;
 	font-weight: 400;
 	background-color: var(--dropdown-list-background-color);
+	background-color: transparent;
 	color: var(--dropdown-list-color);
 }
 
 .select-item:hover {
 	border-radius: 0.3rem;
 	background-color: var(--dropdown-list-background-color-hover);
+	cursor: pointer;
 }
 
 /* || Styling Statistics card */
@@ -360,7 +387,6 @@ label {
 }
 
 .dropdown-stats {
-	overflow: scroll;
 	top: 0.5rem;
 	height: 13rem;
 	z-index: +1;
@@ -470,6 +496,10 @@ footer span {
 	.card {
 		width: 70%;
 		margin: 0.1rem 0.1rem 3rem 0.1rem;
+	}
+
+	.custom-stats-btn-area .button {
+		padding: 1rem;
 	}
 
 	footer {

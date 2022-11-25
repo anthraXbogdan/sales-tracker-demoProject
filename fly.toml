@@ -1,4 +1,4 @@
-# fly.toml file generated for sales-tracker on 2022-10-14T12:20:47+03:00
+# fly.toml file generated for sales-tracker on 2022-11-24T18:01:25+02:00
 
 app = "sales-tracker"
 kill_signal = "SIGINT"
