@@ -90,7 +90,7 @@ submitSaleBtn.addEventListener("click", async (e) => {
 		// Clear the array (delete all data in it)
 		salesItems.splice(0, salesItems.length);
 
-		const docRef = await addDoc(collection(db, "sales"), {
+		const docRef = await addDoc(sales, {
 			type: `${data[0][1]}`,
 			money: `${money.value}`,
 			items: `${items.value}`,
