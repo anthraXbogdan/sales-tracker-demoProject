@@ -79,6 +79,23 @@ themeBtn.addEventListener("click", (e) => {
 	toggleTheme(document.documentElement);
 });
 
+const lightThemeIcon = document.querySelector("#light-theme-icon");
+const darkThemeIcon = document.querySelector("#dark-theme-icon");
+
+// Check client theme preferences
+const checkThemePreference = () => {
+	const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	console.log(prefersDark);
+
+	if (prefersDark) {
+		lightThemeIcon.hidden = true;
+		darkThemeIcon.hidden = false;
+		document.documentElement.classList.add("dark");
+	}
+};
+
+checkThemePreference();
+
 // Submitting data introduced in the sales form card
 
 // !!! Very important: when submit to Firestore DB use the submit button(type 'submit') with event type 'click' instead of submitting the form with event type 'submit'. For the second variant the submit works only in Firefox browser. With first variant the submit works on every browser.
