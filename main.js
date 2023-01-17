@@ -85,7 +85,6 @@ const darkThemeIcon = document.querySelector("#dark-theme-icon");
 // Check client theme preferences
 const checkThemePreference = () => {
 	const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-	console.log(prefersDark);
 
 	if (prefersDark) {
 		lightThemeIcon.hidden = true;
